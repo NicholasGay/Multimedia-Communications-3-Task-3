@@ -23,35 +23,9 @@ void main(){
     //Check for MES
     if(msg[2] == 'S'){
       printf("%s\n",msg);
-      int i;
-      int tempi;
-      char temp1[10];
-      char temp2[10];
-      i =4;
-      tempi = 0;
-      
-      //Getting Mean
-      while(msg[i] != ' '){
-        temp1[tempi] = msg[i];
-        i++;
-        tempi++;
-      }
-      mean += atof(temp1);
-      //printf("mean is:%f\n",mean);
-      i++;
-      tempi = 0;
-     
-      //printf("i is %d\n",i);
-      //Getting Current Buffer
-      while(msg[i] != ' '){
-        temp2[tempi] = msg[i];
-        i++;
-        tempi++;
-      }
-     // printf("%s\n",temp);
-      buffer = atof(temp2);
-      printf("buffer is:%f\n",buffer);
-
+      MESinfo(msg,&buffer,&mean);
+      printf("%f\n",buffer);
+      printf("%f\n",mean);
     }
 
     //Check for MPD

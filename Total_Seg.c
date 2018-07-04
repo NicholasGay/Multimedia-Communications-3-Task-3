@@ -36,3 +36,31 @@ int M2int(char msg[],int m[]){
   
 }
 
+double MESinfo(char msg[], double *buffer, double *mean){
+      int i;
+      int tempi;
+      char temp1[10];
+      char temp2[10];
+     
+      i =4;
+      tempi = 0;
+      
+      //Getting Mean
+      while(msg[i] != ' '){
+        temp1[tempi] = msg[i];
+        i++;
+        tempi++;
+      }
+      *mean += atof(temp1);
+      i++;
+      tempi = 0;
+     
+      while(msg[i] != ' '){
+        temp2[tempi] = msg[i];
+        i++;
+        tempi++;
+      }
+      *buffer = atof(temp2);
+
+
+}
