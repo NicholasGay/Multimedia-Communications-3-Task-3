@@ -3,7 +3,7 @@
 void main(){
 
   sock = connectsock("127.0.0.1", "3001", "tcp");
-  
+   
   //Test(sock);       //Testing program
   //int packet = 1;
   send(sock,command,1500,0);
@@ -14,15 +14,16 @@ void main(){
     //Receving
     recv(sock, msg,sizeof(msg),0); 
 
+    //Check if all Segments downloaded
     if(seg_nr == total && total !=0){
-      printf("Exiting...");
+      printf("Exiting...\n");
       break;
     }
     //Check for MPD
     if(msg[2]=='D'){
       printf("%s\n",msg);
-      total = GetNum(msg);
-      printf("%d\n",total); 
+      N_rep = MDP2int(msg,mdp) -1;
+      total = mdp[0];
     }
 
     //Check for DWN

@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "file.c": "cpp",
+        "total_seg.c": "cpp",
+        "connectsock.c": "cpp"
+    }
+}
