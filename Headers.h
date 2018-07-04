@@ -5,8 +5,12 @@
 #include "File.c"
 #include "Total_Seg.c"
 
-int sock;
-int N_rep;
+int sock,N_rep;
+
+//For Rate calculation
+double buffer;
+double mean = 0;
+int totalrate = 0;
 
 //Commands
 char command[1500] = "CONNECT 6.0 http://kufstein2.lmt.ei.tum.de/short1/";
@@ -18,4 +22,6 @@ char msg[1500];
 //Comparisions
 int total = 0;
 int seg_nr = 0;
+
+//Info
 int mdp[10];

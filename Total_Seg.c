@@ -13,7 +13,7 @@ int GetNum(char msg[]){
   return num;
 }
 
-int MDP2int(char msg[],int mdp[]){
+int M2int(char msg[],int m[]){
     int i =4;
     int index = 0;
     char temp[10];
@@ -28,10 +28,11 @@ int MDP2int(char msg[],int mdp[]){
         i++;
       }
       i++;
-      mdp[index] = atoi(temp);
+      m[index] = atoi(temp);
       index++;
     }
-    mdp[index] = 0;
+    m[index] = 0;
     return index;
   
 }
+

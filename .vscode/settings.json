@@ -3,5 +3,6 @@
         "file.c": "cpp",
         "total_seg.c": "cpp",
         "connectsock.c": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

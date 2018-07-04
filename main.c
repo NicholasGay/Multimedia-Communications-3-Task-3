@@ -19,10 +19,45 @@ void main(){
       printf("Exiting...\n");
       break;
     }
+
+    //Check for MES
+    if(msg[2] == 'S'){
+      printf("%s\n",msg);
+      int i;
+      int tempi;
+      char temp1[10];
+      char temp2[10];
+      i =4;
+      tempi = 0;
+      
+      //Getting Mean
+      while(msg[i] != ' '){
+        temp1[tempi] = msg[i];
+        i++;
+        tempi++;
+      }
+      mean += atof(temp1);
+      //printf("mean is:%f\n",mean);
+      i++;
+      tempi = 0;
+     
+      //printf("i is %d\n",i);
+      //Getting Current Buffer
+      while(msg[i] != ' '){
+        temp2[tempi] = msg[i];
+        i++;
+        tempi++;
+      }
+     // printf("%s\n",temp);
+      buffer = atof(temp2);
+      printf("buffer is:%f\n",buffer);
+
+    }
+
     //Check for MPD
     if(msg[2]=='D'){
       printf("%s\n",msg);
-      N_rep = MDP2int(msg,mdp) -1;
+      N_rep = M2int(msg,mdp) -1;
       total = mdp[0];
     }
 
