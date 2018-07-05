@@ -2,7 +2,8 @@
     "files.associations": {
         "file.c": "cpp",
         "total_seg.c": "cpp",
-        "connectsock.c": "cpp"
+        "connectsock.c": "cpp",
+        "math.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

@@ -22,10 +22,9 @@ void main(){
 
     //Check for MES
     if(msg[2] == 'S'){
-      printf("%s\n",msg);
+      //printf("%s\n",msg);
       MESinfo(msg,&buffer,&mean);
-      printf("%f\n",buffer);
-      printf("%f\n",mean);
+      totalrate++;
     }
 
     //Check for MPD
@@ -35,13 +34,16 @@ void main(){
       total = mdp[0];
     }
 
-    //Check for DWN
+    //Check for DWN and Get new
     if(msg[2]=='N'){
       printf("%s\n",msg);
       seg_nr = GetNum(msg);
       seg_nr = seg_nr+1;
-      sprintf(GET, "GET 6 %d",seg_nr);
-      printf("Getting Seg %d\n",seg_nr);
+
+      //Select Rep
+      rep = select_rep(mean,buffer,totalrate,mdp,bref,N_rep);
+      sprintf(GET, "GET %d %d",rep,seg_nr);
+      printf("GET %d %d\n",rep,seg_nr);
       send(sock,GET,1500,0);
     }
   
