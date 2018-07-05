@@ -1,27 +1,29 @@
 #include <math.h>
-int select_rep(double mean,double buffer,int total,int mdp[],double bref,int N_rep){
+#define kp 0.1
+#define ki 0.01
+int select_rep(double mean,double current_buffer,int total,int mdp[],int N_rep,double error_total,double error,double bref){
+
     int rep;
-    double supposed_rep;
-    double firstdifference,seconddifference;
-    supposed_rep = (mean/((double)total))*(buffer +2-bref);
-    printf("mean is %d\n",total);
-    if(supposed_rep<=0){
-        rep = 1;
-    }
-    else{
-        rep = 1;
-        for(int i =1;i< N_rep;i++){
-            firstdifference = supposed_rep - mdp[i];
-            seconddifference = supposed_rep - mdp[i+1];
-            if(firstdifference >=0 && firstdifference < seconddifference){
-                rep++;
-                break;
-            }
-            else{
-                rep++;
-            }
-            
+    double est_rate,target_rate,output,diff1,diff2;
+    
+    error = current_buffer - bref;
+    printf("error is %f\n",error);
+    est_rate = (mean/((double)total))*1000;
+    output = kp*error+ki*error_total;
+    target_rate = (output+1)*est_rate;
+    
+    rep = 1;
+    for(int i = 1; i<N_rep;i++){
+        diff1 = target_rate-mdp[i];
+        diff2 = target_rate-mdp[i+1];
+        if(diff2<diff1 && diff2 >= 0){
+            rep++;
+            printf("rep is:%d\n",rep);
+        }
+        else{
+            break;
         }
     }
+   
     return rep;
 }

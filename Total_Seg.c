@@ -26,6 +26,11 @@ int M2int(char msg[],int m[]){
         temp[tempi] = msg[i];
         tempi++;
         i++;
+
+        //intiliaze the rest of the array to zero
+        for(int j = tempi+1; j<10;j++){
+          temp[j] = '\0';
+        }
       }
       i++;
       m[index] = atoi(temp);

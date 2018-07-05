@@ -23,7 +23,7 @@ void main(){
     //Check for MES
     if(msg[2] == 'S'){
       //printf("%s\n",msg);
-      MESinfo(msg,&buffer,&mean);
+      MESinfo(msg,&current_buffer,&mean);
       totalrate++;
     }
 
@@ -39,9 +39,11 @@ void main(){
       printf("%s\n",msg);
       seg_nr = GetNum(msg);
       seg_nr = seg_nr+1;
-
+    
       //Select Rep
-      rep = select_rep(mean,buffer,totalrate,mdp,bref,N_rep);
+      error = current_buffer -bref;
+      total_error += error;
+      rep = select_rep(mean,current_buffer,totalrate,mdp,N_rep,total_error,error,bref);
       sprintf(GET, "GET %d %d",rep,seg_nr);
       printf("GET %d %d\n",rep,seg_nr);
       send(sock,GET,1500,0);
