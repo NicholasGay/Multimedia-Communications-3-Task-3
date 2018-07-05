@@ -7,7 +7,6 @@ void main(){
   //Test(sock);       //Testing program
   //int packet = 1;
   send(sock,command,1500,0);
-  send(sock,GET,1500,0);
   printf("Get\n");
   while(1)
   {
@@ -22,7 +21,7 @@ void main(){
 
     //Check for MES
     if(msg[2] == 'S'){
-      //printf("%s\n",msg);
+      printf("%s\n",msg);
       MESinfo(msg,&current_buffer,&mean);
       totalrate++;
     }
@@ -32,6 +31,10 @@ void main(){
       printf("%s\n",msg);
       N_rep = M2int(msg,mdp) -1;
       total = mdp[0];
+      rep = select_rep(mean,current_buffer,totalrate,mdp,N_rep,total_error,error,bref);
+      sprintf(GET, "GET %d 1",rep);
+      printf("GET %d 1\n",rep);
+      send(sock,GET,1500,0);
     }
 
     //Check for DWN and Get new
@@ -47,6 +50,9 @@ void main(){
       sprintf(GET, "GET %d %d",rep,seg_nr);
       printf("GET %d %d\n",rep,seg_nr);
       send(sock,GET,1500,0);
+      mean = 0;
+      totalrate = 0;
+  
     }
   
   }

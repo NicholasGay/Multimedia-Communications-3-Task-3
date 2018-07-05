@@ -10,13 +10,13 @@ int sock,N_rep;
 
 //For Rate calculation
 double current_buffer,total_error,error;
-double bref = 5.0;
+double bref = 10.0;
 double mean = 0;
 int totalrate = 0;
 
 //Commands
-char command[1500] = "CONNECT 6.0 http://kufstein2.lmt.ei.tum.de/short1/";
-char GET[1500] = "GET 1 1";
+char command[1500] = "CONNECT 6.0 http://kufstein2.lmt.ei.tum.de/video/";
+char GET[1500];
 int rep;
 
 //Receive
