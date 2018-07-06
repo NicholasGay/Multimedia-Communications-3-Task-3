@@ -1,7 +1,7 @@
 #include <math.h>
 #define kp 0.1
-#define ki 0
-#define kd 0.2
+#define ki 0.01
+#define kd 0.01
 
 int select_rep(double mean,double current_buffer,int total,int mdp[],int N_rep,double error_total,double error,double bref,float prev_error){
 
