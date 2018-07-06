@@ -10,8 +10,9 @@ int sock,N_rep;
 
 //For Rate calculation
 double current_buffer,total_error,error;
-double bref = 10.0;
+double bref = 15.0;
 double mean = 0;
+double prev_error = 0;
 int totalrate = 0;
 
 //Commands

@@ -31,7 +31,8 @@ void main(){
       printf("%s\n",msg);
       N_rep = M2int(msg,mdp) -1;
       total = mdp[0];
-      rep = select_rep(mean,current_buffer,totalrate,mdp,N_rep,total_error,error,bref);
+      rep =0;
+      rep = select_rep(mean,current_buffer,totalrate,mdp,N_rep,total_error,error,bref,rep);
       sprintf(GET, "GET %d 1",rep);
       printf("GET %d 1\n",rep);
       send(sock,GET,1500,0);
@@ -46,7 +47,7 @@ void main(){
       //Select Rep
       error = current_buffer -bref;
       total_error += error;
-      rep = select_rep(mean,current_buffer,totalrate,mdp,N_rep,total_error,error,bref);
+      rep = select_rep(mean,current_buffer,totalrate,mdp,N_rep,total_error,error,bref,rep);
       sprintf(GET, "GET %d %d",rep,seg_nr);
       printf("GET %d %d\n",rep,seg_nr);
       send(sock,GET,1500,0);

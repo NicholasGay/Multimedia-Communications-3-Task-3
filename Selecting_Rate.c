@@ -1,14 +1,17 @@
 #include <math.h>
 #define kp 0.1
-#define ki 0.01
-int select_rep(double mean,double current_buffer,int total,int mdp[],int N_rep,double error_total,double error,double bref){
+#define ki 0
+#define kd 0.2
+
+int select_rep(double mean,double current_buffer,int total,int mdp[],int N_rep,double error_total,double error,double bref,float prev_error){
 
     int rep;
-    double est_rate,target_rate,output,diff1,diff2;
+    double est_rate,target_rate,output,diff1,diff2,prev_rate;
     
     error = current_buffer - bref;
     est_rate = (mean/((double)total))*1000;
-    output = (kp*error+ki*error_total)/bref; 
+    output = kp*error+ki*error_total+kd*(error-prev_error); 
+    printf("Output is :%f\n",output);
     target_rate = (output+1)*est_rate;
     rep = 1;
     for(int i = 1; i<N_rep;i++){
