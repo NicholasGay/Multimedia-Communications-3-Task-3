@@ -1,5 +1,5 @@
 #include <math.h>
-#define kp 0.2
+#define kp 0.1
 #define ki 0.01
 #define kd 0.01
 
